@@ -1,0 +1,9 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: consumer-oder
+  cloud:
+    zookeeper:
+      connect-string: 129.211.24.140:2181

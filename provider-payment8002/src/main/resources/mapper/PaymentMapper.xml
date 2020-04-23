@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- $符号表示字符串的拼接 容易引起sql注入  $符号中 只能用value 不能用其他的值-->
+<mapper namespace="com.tl666.springcloud.mapper.PaymentMapper">
+    <insert id="addPayment" parameterType="Payment" useGeneratedKeys="true" keyProperty="id">
+          insert into payment(serial) values (#{serial})
+    </insert>
+    <delete id="delPayment" parameterType="Integer">
+        delete from payment where id = #{id}
+    </delete>
+    <update id="updatePayment">
+        update payment set serial = #{serial} where id = #{id}
+    </update>
+</mapper>

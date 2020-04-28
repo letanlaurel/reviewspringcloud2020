@@ -42,18 +42,27 @@ public class PaymentHandler {
         return new CommonResult(444,"添加失败,serverPort:"+serverPort,b);
     }
 
-    @GetMapping("getAll")
-    public CommonResult getAll(){
-
+    @GetMapping("getTimeOutAll")
+    public CommonResult getTimeOutAll(){
+        long time = 3000;
+        //模拟网络延迟
         try {
-            Thread.sleep(3000);
+            Thread.sleep(time);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         List<Payment> list =  paymentService.selectAllPaymentService();
         if(list == null || list.size() == 0)
-            return new CommonResult(444,"没有查询到任何记录,serverPort:"+serverPort,null);
-        return new CommonResult(200,"查询成功,serverPort:"+serverPort,list);
+            return new CommonResult(444,"线程池："+Thread.currentThread().getName()+"没有查询到任何记录，耗时："+time+",serverPort:"+serverPort,null);
+        return new CommonResult(200,"线程池："+Thread.currentThread().getName()+"查询成功，耗时："+time+",serverPort:"+serverPort,list);
+    }
+
+    @GetMapping("getAll")
+    public CommonResult getAll(){
+        List<Payment> list =  paymentService.selectAllPaymentService();
+        if(list == null || list.size() == 0)
+            return new CommonResult(444,"线程池："+Thread.currentThread().getName()+"没有查询到任何记录,serverPort:"+serverPort,null);
+        return new CommonResult(200,"线程池："+Thread.currentThread().getName()+"查询成功,serverPort:"+serverPort,list);
     }
 
     @GetMapping("discovery")

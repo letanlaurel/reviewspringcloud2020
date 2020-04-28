@@ -21,6 +21,9 @@
         <module>zookeeper-consumer-oder80</module>
         <module>consul-consumer-oder80</module>
         <module>consul-provider-payment8004</module>
+        <module>feign-consumer-oder80</module>
+        <module>hystrix-provider-payment8001</module>
+        <module>hystrix-feign-consumer-oder80</module>
     </modules>
     <packaging>pom</packaging>
 

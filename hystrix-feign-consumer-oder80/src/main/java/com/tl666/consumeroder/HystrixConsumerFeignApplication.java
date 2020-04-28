@@ -1,10 +1,9 @@
 package com.tl666.consumeroder;
 
-import com.tl666.balancerule.MyBalancerule;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.cloud.netflix.ribbon.RibbonClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * @Auther: TanLe
@@ -13,9 +12,9 @@ import org.springframework.cloud.netflix.ribbon.RibbonClient;
  */
 @SpringBootApplication
 @EnableEurekaClient
-@RibbonClient(name = "payment-service",configuration = MyBalancerule.class)
-public class ConsumerApplication {
+@EnableFeignClients
+public class HystrixConsumerFeignApplication {
     public static void main(String[] args){
-            SpringApplication.run(ConsumerApplication.class,args);
+            SpringApplication.run(HystrixConsumerFeignApplication.class,args);
     }
 }
